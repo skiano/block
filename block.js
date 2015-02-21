@@ -27,13 +27,16 @@ module.exports = function (dimensions, options) {
  */
 
 function inBlock (p, dimensions) {
-  console.log(p, dimensions)
   return p[0] >= 0 &&
-         p[0] <= dimensions[0] &&
+         p[0] < dimensions[0] &&
          p[1] >= 0 &&
-         p[1] <= dimensions[1];
+         p[1] < dimensions[1];
 }
 
-function findPoint (p, dimensions, options) {
-  return [];
+function findPoint (p, dim, options) {
+
+  var x = p[0] >= 0 ? p[0] % dim[0] : dim[0] + (p[0] % dim[0]);
+  var y = p[1] >= 0 ? p[1] % dim[1] : dim[1] + (p[1] % dim[1]);
+
+  return [x,y];
 }
