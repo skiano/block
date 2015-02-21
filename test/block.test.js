@@ -19,6 +19,7 @@ describe('Block', function(){
     b.get([0,3]).should.eql([0,0]);
     b.get([0,4]).should.eql([0,1]);
     b.get([-4,4]).should.eql([2,1]);
+    b.get([-4,-8]).should.eql([2,2]);
 
   });
 
