@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/skiano/pattern/issues"
   },
-  "homepage": "https://github.com/skiano/pattern"
+  "homepage": "https://github.com/skiano/pattern",
+  "dependencies": {
+    "lodash": "^3.3.0"
+  }
 }
