@@ -1,12 +1,12 @@
 
 var _ = require('lodash'),
-  D = {X: 'X', Y: 'Y'};
+  d = {x: 'x', y: 'y'};
 
 function Block (dimensions, options) {
 
   options = _.extend({
     step: 0,
-    stepDirection: D.Y,
+    direction: d.y,
     rotate: 0,
     mirror: true
   }, options);
@@ -35,8 +35,20 @@ function inBlock (p, dimensions) {
 
 function findPoint (p, dim, options) {
 
-  var x = p[0] >= 0 ? p[0] % dim[0] : dim[0] + (p[0] % dim[0]);
-  var y = p[1] >= 0 ? p[1] % dim[1] : dim[1] + (p[1] % dim[1]);
+  var stepShiftX = 0,
+    stepShiftY = 0;
+
+  if (options.direction === d.x) {
+    stepShiftX = Math.floor(p[1] / dim[1]) * options.step;
+  } else {
+    stepShiftY = Math.floor(p[0] / dim[0]) * options.step;
+  }
+
+  var x = p[0] + stepShiftX,
+    y = p[1] + stepShiftY;
+
+  x = x >= 0 ? x % dim[0] : dim[0] + (x % dim[0]);
+  y = y >= 0 ? y % dim[1] : dim[1] + (y % dim[1]);
 
   return [x,y];
 }

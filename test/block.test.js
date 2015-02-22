@@ -20,7 +20,18 @@ describe('Block', function(){
     b.get([0,4]).should.eql([0,1]);
     b.get([-4,4]).should.eql([2,1]);
     b.get([-4,-8]).should.eql([2,1]);
-    
+
+  });
+
+  it('should handle step left', function () {
+
+    var b = block([3,3], {
+      step: 1,
+      direction: 'x'
+    });
+
+    b.get(1,-2).should.eql([0,1]);
+
   });
 
 });
