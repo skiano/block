@@ -1,5 +1,6 @@
 
-var rand = require('random-seed').create(),
+var _ = require('lodash'), 
+  rand = require('random-seed').create(),
   block = require('../block'),
   dim = [10,10],
   b = block(dim);
@@ -23,6 +24,27 @@ function nextMove (current) {
   ];
 }
 
+function printBlock (blockPoints, repeatX, repeatY) {
+  repeatX = repeatX || 1;
+  repeatY = repeatY || 1;
+
+  var grid = _.map(_.range(0,dim[1]), function (i) {
+    return _.map(_.range(0,dim[0]), function (i) {
+      return '.';
+    });
+  });
+
+  blockPoints.forEach(function (p) {
+    grid[p[1]][p[0]] = 'X';
+  });
+
+  return new Array(repeatY + 1 ).join(
+    _.map(grid, function (row) {
+      return new Array( repeatX + 1 ).join(row.join(''));
+    }).join('\n') + '\n'
+  );
+}
+
 var point = [
   rand.intBetween(0,dim[0]-1),
   rand.intBetween(0,dim[1]-1)
@@ -30,9 +52,16 @@ var point = [
 
 var blockPoints = [],
   i;
-for (i = 0; i < 23; i += 1) {
+for (i = 0; i < 53; i += 1) {
   point = nextMove(point);
   blockPoints.push(b.get(point));
 }
 
-console.log(blockPoints);
+
+var str = printBlock(blockPoints, 4, 3);
+
+console.log(str);
+
+// console.log(blockPoints);
+
+
