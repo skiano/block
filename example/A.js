@@ -1,8 +1,8 @@
 
-var _ = require('lodash'), 
+var _ = require('lodash'),
   rand = require('random-seed').create(),
   block = require('../block'),
-  dim = [10,10],
+  dim = [20,10],
   b = block(dim);
 
 var movements = [
