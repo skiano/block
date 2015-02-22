@@ -2,18 +2,39 @@
 var _ = require('lodash'),
   rand = require('random-seed').create(),
   block = require('../block'),
-  dim = [20,10],
-  b = block(dim);
+  dim = [24,14],
+  b = block(dim, {
+    step: 12, // rand.intBetween(-55, 155),
+    direction: 'y'
+  });
 
 var movements = [
-  [1,0],   // up
-  [-1,0],  // down
-  [0,1],   // right
-  [0,-1],  // left
-  [1,1],   // up-right
-  [-1,1],  // up-left
-  [1,-1],  // down-right
-  [-1,-1]  // down-left
+  [1,0],
+  // [-1,0],
+  [0,1],
+  // [0,-1],
+  [1,1],
+  [-1,1],
+  [1,-1],
+  [-1,-1],
+
+  [0,2],
+  // [0,2],
+  // [0,2],
+  // [0,2],
+  // [0,2],
+  // [0,2],
+  // [0,2],
+  // [0,2],
+  // [0,2],
+  // [0,2],
+  // [0,2],
+  // [1,0],
+  // [1,0],
+  // [1,0],
+  // [1,0],
+  // [1,0],
+
 ];
 
 function nextMove (current) {
@@ -35,12 +56,12 @@ function printBlock (blockPoints, repeatX, repeatY) {
   });
 
   blockPoints.forEach(function (p) {
-    grid[p[1]][p[0]] = 'X';
+    grid[p[1]][p[0]] = '}';
   });
 
-  return new Array(repeatY + 1 ).join(
+  return '\n' + new Array(repeatY + 1 ).join(
     _.map(grid, function (row) {
-      return new Array( repeatX + 1 ).join(row.join(''));
+      return '  ' + new Array( repeatX + 1 ).join(row.join(''));
     }).join('\n') + '\n'
   );
 }
@@ -52,13 +73,13 @@ var point = [
 
 var blockPoints = [],
   i;
-for (i = 0; i < 53; i += 1) {
+for (i = 0; i < rand.intBetween(60, 190); i += 1) {
   point = nextMove(point);
   blockPoints.push(b.get(point));
 }
 
 
-var str = printBlock(blockPoints, 4, 3);
+var str = printBlock(blockPoints, 5, 3);
 
 console.log(str);
 

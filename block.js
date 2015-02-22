@@ -48,11 +48,12 @@ function findPoint (p, dim, options) {
     stepShiftX = Math.floor(y / h);
   } else {
     stepShiftY = Math.floor(x / w);
+    console.log(stepShiftY);
   }
 
   // account for shift
-  x = x + stepShiftX * options.step;
-  y = y + stepShiftY * options.step;
+  x = x + (stepShiftX * options.step);
+  y = y + (stepShiftY * options.step);
 
   // account for overflow
   x = x >= 0 ? x % w : w - (Math.abs(x+1) % w) - 1;
