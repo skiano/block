@@ -35,20 +35,27 @@ function inBlock (p, dimensions) {
 
 function findPoint (p, dim, options) {
 
-  var stepShiftX = 0,
+  var x = p[0],
+    y = p[1],
+    w = dim[0],
+    h = dim[1],
+    stepShiftX = 0,
     stepShiftY = 0;
 
+  // decide shift amount
   if (options.direction === d.x) {
-    stepShiftX = Math.floor(p[1] / dim[1]) * options.step;
+    stepShiftX = Math.floor(y / h);
   } else {
-    stepShiftY = Math.floor(p[0] / dim[0]) * options.step;
+    stepShiftY = Math.floor(x / w);
   }
 
-  var x = p[0] + stepShiftX,
-    y = p[1] + stepShiftY;
+  // account for shift
+  x = x + stepShiftX * options.step;
+  y = y + stepShiftY * options.step;
 
-  x = x >= 0 ? x % dim[0] : dim[0] + (x % dim[0]);
-  y = y >= 0 ? y % dim[1] : dim[1] + (y % dim[1]);
+  // account for overflow
+  x = x >= 0 ? x % w : w - (Math.abs(x+1) % w) - 1;
+  y = y >= 0 ? y % h : h - (Math.abs(y+1) % h) - 1;
 
   return [x,y];
 }
