@@ -2,13 +2,14 @@
 var _ = require('lodash'),
   d = {x: 'x', y: 'y'};
 
+// TODO: handle rotation
+
 function Block (dimensions, options) {
 
   options = _.extend({
     step: 0,
     direction: d.y,
-    rotate: 0,
-    mirror: true
+    rotate: 0, // 90, -90, 180
   }, options);
 
   this.get = function (px, py) {
