@@ -6,9 +6,9 @@ describe('Block', function(){
 
   it('should handle 1 and 2 arguments', function(){
 
-    // var b = block([10,10]);
-    // b.get([0,0]).should.eql([0,0]);
-    // b.get(0,6).should.eql([0,6]);
+    var b = block([10,10]);
+    b.get([0,0]).should.eql([0,0]);
+    b.get(0,6).should.eql([0,6]);
 
   });
 
@@ -25,7 +25,6 @@ describe('Block', function(){
     b.get([4,4]).should.eql([1,1]);
     b.get([5,5]).should.eql([2,2]);
     b.get([6,6]).should.eql([0,0]);
-
   });
 
   it('should handle step left', function () {
@@ -41,7 +40,6 @@ describe('Block', function(){
     b.get(2,-6).should.eql([0,0]);
     b.get(0,4).should.eql([1,1]);
     b.get(2,6).should.eql([1,0]);
-
   });
 
 });
