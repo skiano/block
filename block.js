@@ -48,7 +48,6 @@ function findPoint (p, dim, options) {
     stepShiftX = Math.floor(y / h);
   } else {
     stepShiftY = Math.floor(x / w);
-    console.log(stepShiftY);
   }
 
   // account for shift
