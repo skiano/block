@@ -48,8 +48,13 @@ function findPoint (p, dim, options) {
   y = y >= 0 ? y % h : h - (Math.abs(y+1) % h) - 1;
 
   if (options.rotate === 180) {
-    x = w - x - 1;
-    y = h - y - 1;
+
+    if ((Math.floor(p[0]/w)%2 === 1 && Math.floor(p[1]/h)%2 === 0) ||
+        (Math.floor(p[0]/w)%2 === 0 && Math.floor(p[1]/h)%2 === 1)) {
+      x = w - x - 1;
+      y = h - y - 1;
+    }
+    
   }
 
   return [x,y];
