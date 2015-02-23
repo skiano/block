@@ -14,7 +14,7 @@ function Block (dimensions, options) {
 
   this.get = function (px, py) {
     p = arguments.length === 2 ? [px,py] : px;
-    return inBlock(p, dimensions) ? p : findPoint(p, dimensions, options);
+    return findPoint(p, dimensions, options);
   };
 
 }
@@ -22,17 +22,6 @@ function Block (dimensions, options) {
 module.exports = function (dimensions, options) {
   return new Block(dimensions, options);
 };
-
-/*
- * Utilities
- */
-
-function inBlock (p, dimensions) {
-  return p[0] >= 0 &&
-         p[0] < dimensions[0] &&
-         p[1] >= 0 &&
-         p[1] < dimensions[1];
-}
 
 function findPoint (p, dim, options) {
 
@@ -57,6 +46,11 @@ function findPoint (p, dim, options) {
   // account for overflow
   x = x >= 0 ? x % w : w - (Math.abs(x+1) % w) - 1;
   y = y >= 0 ? y % h : h - (Math.abs(y+1) % h) - 1;
+
+  if (options.rotate === 180) {
+    x = w - x - 1;
+    y = h - y - 1;
+  }
 
   return [x,y];
 }

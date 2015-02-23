@@ -125,7 +125,7 @@ function box (point, block, w, h) {
 
 for (i = 0; i < rand.intBetween(1, 3); i += 1) {
   var p = [rand.intBetween(0,a.width), rand.intBetween(0,a.height)];
-  var w = rand.intBetween(3,7);
+  var w = rand.intBetween(3,17);
   var h = rand.intBetween(3,7);
   box(p, a, w, h);
 }

@@ -57,4 +57,16 @@ describe('Block', function(){
     b.get(6,2).should.eql([0,1]);
   });
 
+  it('should 180 rotation', function () {
+
+    var b = block([3,3], {
+      rotate: 180
+    });
+
+    b.get(0,0).should.eql([2,2]);
+    b.get(2,1).should.eql([0,1]);
+    b.get(1,2).should.eql([1,0]);
+
+  });
+
 });
