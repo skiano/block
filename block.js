@@ -60,16 +60,18 @@ function Block (dimensions, options) {
   function findPoint (p) {
 
     var cell = getCell(p),
-      blockOrientation = getBlockOrientation(cell),
       stepShiftX = isHorizontal() ? cell.y * options.step : 0,
       stepShiftY = isVertical() ? cell.x * options.step : 0,
       x = getX(p) + stepShiftX,
       y = getY(p) + stepShiftY;
 
+    // compensate for shift
+    var shiftedCell = getCell([x,y]),
+      blockOrientation = getBlockOrientation(shiftedCell);
+
     // account for overflow
     x = x >= 0 ? x % blockW : blockW - (Math.abs(x+1) % blockW) - 1;
     y = y >= 0 ? y % blockH : blockH - (Math.abs(y+1) % blockH) - 1;
-
 
     return rotators[blockOrientation](x,y,blockW,blockH);
 
