@@ -77,4 +77,16 @@ describe('Block', function(){
 
   });
 
+  // it('should 180 rotation with step', function () {
+
+  //   var b = block([5,5], {
+  //     rotate: 180
+  //   });
+
+  //   b.get(2,4).should.eql([2,4]);
+  //   b.get(1,6).should.eql([3,3]);
+  //   b.get(6,7).should.eql([1,4]);
+   
+  // });
+
 });
