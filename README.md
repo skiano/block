@@ -1,2 +1,2 @@
-# pattern
-pattern ideas
+# block
+basis for block patterns
