@@ -92,7 +92,7 @@ describe('Block', function(){
    
   });
 
-  it('should `clockwise` rotation', function () {
+  it('should support `clockwise` rotation', function () {
 
     var b = block([2,2], {
       rotate: 'clockwise'
@@ -102,6 +102,16 @@ describe('Block', function(){
     b.get(-2,1).should.eql([1,1]);
     b.get(2,0).should.eql([1,0]);
     b.get(3,-2).should.eql([0,1]);
+   
+  });
+
+  it('should support `counterClockwise` rotation', function () {
+
+    var b = block([3,3], {
+      rotate: 'counterClockwise'
+    });
+
+    b.get(3,1).should.eql([1,2]);
    
   });
 
