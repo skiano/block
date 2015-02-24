@@ -8,6 +8,20 @@ var blockVariants = {
   'counterClockwise': ['0', '1/4', '1/2', '3/4']
 };
 
+var rotators = {
+  
+  '0': function (x,y) {
+    return [x,y];
+  },
+
+  '1/2': function (x,y,w,h) {
+    x = w - x - 1;
+    y = h - y - 1;
+    return [x,y];
+  }
+
+};
+
 function getX (p) { return p[0]; }
 function getY (p) { return p[1]; }
 
@@ -60,34 +74,9 @@ function Block (dimensions, options) {
     x = x >= 0 ? x % blockW : blockW - (Math.abs(x+1) % blockW) - 1;
     y = y >= 0 ? y % blockH : blockH - (Math.abs(y+1) % blockH) - 1;
 
-    
 
-    switch (blockOrientation) {
-      case '0':
-        break;
+    return rotators[blockOrientation](x,y,blockW,blockH);
 
-      case '1/4':
-        break;
-
-      case '1/2':
-        console.log(blockOrientation);
-        break;
-
-      case '3/4':
-        break;
-    }
-
-    if (options.rotate === 'half') {
-
-      if ((cell.x % 2 === 1 && cell.y % 2 === 0) ||
-          (cell.x % 2 === 0 && cell.y % 2 === 1)) {
-        x = blockW - x - 1;
-        y = blockH - y - 1;
-      }
-      
-    }
-
-    return [x,y];
   }
 
   function getBlockOrientation (cell) {
@@ -95,26 +84,6 @@ function Block (dimensions, options) {
   }
 
 }
-
-function getBlockOrientation (cell) {
-  return variants[(cell.x + (cell.y % variants.length)) % variants.length];
-}
-
-// var x, y;
-// var variants = ['A','B'];
-
-// for (y = 0; y < 14; y += 1) {
-
-//   var str = [];
-
-//   for (x = 0; x < 14; x += 1) {
-//     str.push(getBlockOrientation({x:x,y:y}, variants));
-//   }
-
-//   console.log(str.join(' '));
-
-// }
-
 
 module.exports = function (dimensions, options) {
   return new Block(dimensions, options);
