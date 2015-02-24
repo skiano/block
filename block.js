@@ -25,6 +25,10 @@ var rotators = {
 function getX (p) { return p[0]; }
 function getY (p) { return p[1]; }
 
+function getLoopPosition (idx, loopLength) {
+  return idx >= 0 ? idx % loopLength : loopLength - (Math.abs(idx+1) % loopLength) - 1;
+}
+
 function Block (dimensions, options) {
 
   options = _.extend({
@@ -70,15 +74,16 @@ function Block (dimensions, options) {
       blockOrientation = getBlockOrientation(shiftedCell);
 
     // account for overflow
-    x = x >= 0 ? x % blockW : blockW - (Math.abs(x+1) % blockW) - 1;
-    y = y >= 0 ? y % blockH : blockH - (Math.abs(y+1) % blockH) - 1;
+    x = getLoopPosition(x, blockW);
+    y = getLoopPosition(y, blockH);
 
     return rotators[blockOrientation](x,y,blockW,blockH);
-
   }
 
   function getBlockOrientation (cell) {
-    return variants[(cell.x + (cell.y % variants.length)) % variants.length];
+    var x = getLoopPosition(cell.x, variants.length),
+      y = getLoopPosition(cell.y, variants.length);
+    return variants[(x + y) % variants.length];
   }
 
 }

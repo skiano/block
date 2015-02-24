@@ -89,6 +89,7 @@ describe('Block', function(){
     b.get(6,7).should.eql([1,4]);
     b.get(9,-2).should.eql([0,4]);
     b.get(13,2).should.eql([1,3]);
+    b.get(-2,2).should.eql([1,4]);
    
   });
 
