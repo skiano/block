@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/skiano/pattern.git"
+    "url": "https://github.com/skiano/block.git"
   },
   "author": "Greg Skiano",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/skiano/pattern/issues"
+    "url": "https://github.com/skiano/block/issues"
   },
-  "homepage": "https://github.com/skiano/pattern",
+  "homepage": "https://github.com/skiano/block",
   "dependencies": {
     "lodash": "^3.3.0"
   },
