@@ -63,12 +63,8 @@ function Block (dimensions, options) {
       blockOrientation = getBlockOrientation(cell),
       stepShiftX = isHorizontal() ? cell.y * options.step : 0,
       stepShiftY = isVertical() ? cell.x * options.step : 0,
-      x = getX(p),
-      y = getY(p);
-
-    // account for shift
-    x = x + stepShiftX;
-    y = y + stepShiftY;
+      x = getX(p) + stepShiftX,
+      y = getY(p) + stepShiftY;
 
     // account for overflow
     x = x >= 0 ? x % blockW : blockW - (Math.abs(x+1) % blockW) - 1;
