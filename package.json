@@ -1,6 +1,6 @@
 {
   "name": "skiano.block",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "block pattern",
   "main": "block.js",
   "scripts": {
