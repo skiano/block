@@ -57,10 +57,10 @@ describe('Block', function(){
     b.get(-6,2).should.eql([0,0]);
     b.get(4,0).should.eql([1,1]);
     b.get(6,2).should.eql([0,1]);
-    
+
   });
 
-  it('should 180 rotation', function () {
+  it('should `half` rotation', function () {
 
     var b = block([3,3], {
       rotate: 'half'
@@ -76,7 +76,7 @@ describe('Block', function(){
 
   });
 
-  it('should 180 rotation with step', function () {
+  it('should `half` rotation with step', function () {
 
     var b = block([5,5], {
       rotate: 'half',
@@ -89,6 +89,19 @@ describe('Block', function(){
     b.get(9,-2).should.eql([0,4]);
     b.get(13,2).should.eql([1,3]);
     b.get(-2,2).should.eql([1,4]);
+   
+  });
+
+  it('should `clockwise` rotation', function () {
+
+    var b = block([2,2], {
+      rotate: 'clockwise'
+    });
+
+    b.get(2,4).should.eql([0,1]);
+    b.get(-2,1).should.eql([1,1]);
+    b.get(2,0).should.eql([1,0]);
+    b.get(3,-2).should.eql([0,1]);
    
   });
 

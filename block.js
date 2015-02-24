@@ -5,19 +5,41 @@ var blockVariants = {
   'none': ['0'],
   'half': ['0', '1/2'],
   'clockwise': ['0', '1/4', '1/2', '3/4'],
-  'counterClockwise': ['0', '1/4', '1/2', '3/4']
+  'counterClockwise': ['0', '3/4', '1/2', '1/4']
 };
 
 var rotators = {
+
+  // http://stackoverflow.com/questions/42519/how-do-you-rotate-a-two-dimensional-array
   
   '0': function (x,y) {
     return [x,y];
   },
 
   '1/2': function (x,y,w,h) {
+    // reverse row
     x = w - x - 1;
+    // reverse column
     y = h - y - 1;
     return [x,y];
+  },
+
+  '3/4': function (x,y,w,h) {
+    // transpose
+    var newX = y;
+    var newY = x;
+    // reverse column
+    newY = h - newY - 1;
+    return [newX, newY];
+  },
+
+  '1/4': function (x,y,w,h) {
+    // transpose
+    var newX = y;
+    var newY = x;
+    // reverse row
+    newX = w - newX - 1;
+    return [newX, newY];
   }
 
 };
@@ -82,7 +104,8 @@ function Block (dimensions, options) {
 
   function getBlockOrientation (cell) {
     var x = getLoopPosition(cell.x, variants.length),
-      y = getLoopPosition(cell.y, variants.length);
+      y = getLoopPosition(-cell.y, variants.length);
+
     return variants[(x + y) % variants.length];
   }
 
