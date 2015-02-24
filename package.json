@@ -2,7 +2,7 @@
   "name": "skiano.block",
   "version": "1.0.0",
   "description": "block pattern",
-  "main": "index.js",
+  "main": "block.js",
   "scripts": {
     "test": "mocha",
     "test-cov": "istanbul cover _mocha"
