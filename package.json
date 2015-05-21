@@ -5,7 +5,7 @@
   "main": "block.js",
   "scripts": {
     "test": "mocha",
-    "test-cov": "istanbul cover _mocha"
+    "test-cover": "istanbul cover _mocha"
   },
   "repository": {
     "type": "git",

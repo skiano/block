@@ -10,6 +10,12 @@ describe('Block', function(){
     b.get(0,6).should.eql([0,6]);
   });
 
+  it('should handle floats', function(){
+    // TODO:
+    // make sure the step and loop work
+    // with decimals
+  });
+
   it('should handle overflow', function(){
     var b = block([3,3]);
     
