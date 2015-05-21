@@ -23,35 +23,6 @@ function Block (dimensions, options) {
     return findPoint(p);
   };
 
-  this.getNeighbors = function (p, levels) {
-    levels = levels || 1;
-    
-    var neighbors = [], l, x, y;
-
-    for (l = 1; l <= levels; l += 1) {
-      // top and bottom
-      var levelPoints = [],
-        top = getY(p) - l,
-        bottom = getY(p) + l,
-        left = getX(p) - l,
-        right = getX(p) + l;
-
-      for (x = left; x <= right; x += 1) {
-        levelPoints.push(findPoint([x,top]));
-        levelPoints.push(findPoint([x,bottom]));
-      }
-
-      for (y = top + 1; y < bottom; y += 1) {
-        levelPoints.push(findPoint([left,y]));
-        levelPoints.push(findPoint([right,y]));
-      }
-
-      neighbors.push(levelPoints);
-    }
-
-    return neighbors;
-  };
-
   function getCell (p) {
     return {
       x: Math.floor(getX(p) / blockW),
