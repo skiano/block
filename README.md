@@ -24,3 +24,23 @@ var point = b.get(50,50); // returns [50,50]
 var point = b.get(-1,-1); // returns [99,99]
 ```
 
+#### Configuring Step Patterns
+
+Steps allow for patterns that shift on the `x` or `y` axis. Sometimes reffered to as a drop. 
+
+```javascript
+var b = block([4,4], {
+  step: 1,
+  direction: 'y' // 'x' or 'y'
+});
+
+var p = b.get(6,4); // returns [2,3]
+
+//   0 1 2 3 4 5 6 7
+// 0 | | | |
+// 1 | | | | - - - -
+// 2 | | | | - - - -
+// 3 | | | | - - - -
+// 4         - - p -  <-- point lands on a shifted block
+```
+
