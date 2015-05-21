@@ -73,11 +73,12 @@ var n = b.getNeighbors([2,2], levels); // returns 'levels' array
 
 _illustration of 'levels' array
 ```
-Point [2,2] -> n[0] of point -> n[1] of point
-. . . . .      . . . . .        x x x x x
-. . . . .      . x x x .        x . . . x
-. . x . .      . x . x .        x . . . x
-. . . . .      . x x x .        x . . . x
-. . . . .      . . . . .        x x x x x
+  [2,2]    ->     n[0]    ->     n[1]
+
+. . . . .      . . . . .      x x x x x
+. . . . .      . x x x .      x . . . x
+. . x . .  ->  . x . x .  ->  x . . . x
+. . . . .      . x x x .      x . . . x
+. . . . .      . . . . .      x x x x x
 ```
 
