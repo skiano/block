@@ -132,6 +132,10 @@ describe('Block', function(){
     var b = block([5,5]),
       neighbors = b.getNeighbors([0,0]);
 
-    console.log(neighbors);
+    neighbors[0].should.containDeep([
+      [4,4],[0,4],[1,4],
+      [4,0]   ,   [1,0],
+      [4,1],[0,1],[1,1]
+    ]);
   });
 });
