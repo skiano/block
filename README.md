@@ -46,3 +46,16 @@ _Illustration of how p works with a simple step_
 4         ~ ~ p ~  <-- point lands on a shifted block
 ```
 
+_Illustration of step options_
+```
+Step 2 on the X axis    Step -2 on the Y axis (0r +1)
+
+~ ~ ~ ~ ~ ~ ~ ~ ~ ~     ~ ~ |   |   |
+|     |     |     |     |   ~ ~ ~   |
+~ ~ ~ ~ ~ ~ ~ ~ ~ ~     |   |   ~ ~ ~
+    |     |     |       ~ ~ ~   |   |
+~ ~ ~ ~ ~ ~ ~ ~ ~ ~     |   ~ ~ ~   |
+  |     |     |         |   |   ~ ~ ~
+~ ~ ~ ~ ~ ~ ~ ~ ~ ~     ~ ~ ~   |   |
+```
+
