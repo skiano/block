@@ -8,14 +8,13 @@ var blockVariants = {
   'counterClockwise': ['0', '3/4', '1/2', '1/4']
 };
 
-var rotators = {
+// For info about rotators
+// http://stackoverflow.com/questions/42519/how-do-you-rotate-a-two-dimensional-array
 
-  // http://stackoverflow.com/questions/42519/how-do-you-rotate-a-two-dimensional-array
-  
+var rotators = {
   '0': function (x,y) {
     return [x,y];
   },
-
   '1/2': function (x,y,w,h) {
     // reverse row
     x = w - x - 1;
@@ -23,7 +22,6 @@ var rotators = {
     y = h - y - 1;
     return [x,y];
   },
-
   '3/4': function (x,y,w,h) {
     // transpose
     var newX = y;
@@ -32,7 +30,6 @@ var rotators = {
     newY = h - newY - 1;
     return [newX, newY];
   },
-
   '1/4': function (x,y,w,h) {
     // transpose
     var newX = y;
@@ -41,7 +38,6 @@ var rotators = {
     newX = w - newX - 1;
     return [newX, newY];
   }
-
 };
 
 function getX (p) { return p[0]; }
@@ -52,7 +48,6 @@ function getLoopPosition (idx, loopLength) {
 }
 
 function Block (dimensions, options) {
-
   options = _.extend({
     step: 0,
     direction: 'y',
@@ -66,6 +61,35 @@ function Block (dimensions, options) {
   this.get = function (px, py) {
     p = arguments.length === 2 ? [px,py] : px;
     return findPoint(p);
+  };
+
+  this.getNeighbors = function (p, levels) {
+    levels = levels || 1;
+    
+    var neighbors = [], l, x, y;
+
+    for (l = 1; l <= levels; l += 1) {
+      // top and bottom
+      var levelPoints = [],
+        top = getY(p) - l,
+        bottom = getY(p) + l,
+        left = getX(p) - l,
+        right = getX(p) + l;
+
+      for (x = left; x <= right; x += 1) {
+        levelPoints.push([x,top]);
+        levelPoints.push([x,bottom]);
+      }
+
+      for (y = top + 1; y < bottom; y += 1) {
+        levelPoints.push([left,y]);
+        levelPoints.push([right,y]);
+      }
+
+      neighbors.push(levelPoints);
+    }
+
+    return neighbors;
   };
 
   function getCell (p) {
@@ -84,7 +108,6 @@ function Block (dimensions, options) {
   }
 
   function findPoint (p) {
-
     var cell = getCell(p),
       stepShiftX = isHorizontal() ? cell.y * options.step : 0,
       stepShiftY = isVertical() ? cell.x * options.step : 0,
@@ -108,7 +131,6 @@ function Block (dimensions, options) {
 
     return variants[(x + y) % variants.length];
   }
-
 }
 
 module.exports = function (dimensions, options) {
