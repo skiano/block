@@ -38,11 +38,11 @@ var p = b.get(6,4); // returns [2,3]
 ```
 _Illustration of how p works with a simple step_
 ```
-  0 1 2 3 4 5 6 7
-  0 - - - -
-  1 - - - - ~ ~ ~ ~
-  2 - - - - ~ ~ ~ ~
-  3 - - - - ~ ~ ~ ~
-  4         ~ ~ p ~  <-- point lands on a shifted block
+0 1 2 3 4 5 6 7
+0 - - - -
+1 - - - - ~ ~ ~ ~
+2 - - - - ~ ~ ~ ~
+3 - - - - ~ ~ ~ ~
+4         ~ ~ p ~  <-- point lands on a shifted block
 ```
 
