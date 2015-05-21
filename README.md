@@ -3,7 +3,7 @@
 
 A utility for describing positions in terms of a pattern block. You configure the size and settings of the pattern block and then ask for 'absolute' positions to be converted to positions on the pattern block.
 
-_So far it only works with integer positions_
+_So far only integer positions are fully tested_
 
 #### Installation
 
