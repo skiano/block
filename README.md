@@ -60,7 +60,7 @@ Step 2 on the X axis    Step -2 on the Y axis (0r +1)
 ```
 ### Getting Neighbor points
 
-You can ask for the points surrounding a given point like so
+You can ask for the points surrounding a given point (and you will get the resulting points on the pattern block)
 
 ```javascript
 var b = block([5,5]),
