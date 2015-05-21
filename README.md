@@ -37,10 +37,10 @@ var b = block([4,4], {
 var p = b.get(6,4); // returns [2,3]
 
 //   0 1 2 3 4 5 6 7
-// 0 | | | |
-// 1 | | | | - - - -
-// 2 | | | | - - - -
-// 3 | | | | - - - -
-// 4         - - p -  <-- point lands on a shifted block
+// 0 - - - -
+// 1 - - - - ~ ~ ~ ~
+// 2 - - - - ~ ~ ~ ~
+// 3 - - - - ~ ~ ~ ~
+// 4         ~ ~ p ~  <-- point lands on a shifted block
 ```
 
