@@ -71,3 +71,13 @@ var n = b.getNeighbors([2,2], levels); // returns 'levels' array
 // n[1] corresponds to the ring of points around n[0]
 ```
 
+_illustration of 'levels' array
+```
+Point [2,2] -> n[0] of point -> n[1] of point
+. . . . .      . . . . .        x x x x x
+. . . . .      . x x x .        x . . . x
+. . x . .      . x . x .        x . . . x
+. . . . .      . x x x .        x . . . x
+. . . . .      . . . . .        x x x x x
+```
+
