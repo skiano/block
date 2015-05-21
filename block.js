@@ -111,8 +111,8 @@ function Block (dimensions, options) {
     var cell = getCell(p),
       stepShiftX = isHorizontal() ? cell.y * options.step : 0,
       stepShiftY = isVertical() ? cell.x * options.step : 0,
-      x = getX(p) + stepShiftX,
-      y = getY(p) + stepShiftY;
+      x = getX(p) - stepShiftX,
+      y = getY(p) - stepShiftY;
 
     // compensate for shift
     var shiftedCell = getCell([x,y]),

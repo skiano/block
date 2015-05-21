@@ -25,7 +25,7 @@ describe('Block', function(){
 
   it('should handle step horizontal', function () {
     var b = block([3,3], {
-      step: 1,
+      step: -1,
       direction: 'x'
     });
 
@@ -39,7 +39,7 @@ describe('Block', function(){
 
   it('should handle step vertical', function () {
     var b = block([3,3], {
-      step: 1,
+      step: -1,
       direction: 'y'
     });
 
@@ -49,6 +49,15 @@ describe('Block', function(){
     b.get(-6,2).should.eql([0,0]);
     b.get(4,0).should.eql([1,1]);
     b.get(6,2).should.eql([0,1]);
+  });
+
+  it('should handle step vertical', function () {
+    var b = block([4,4], {
+      step: 1,
+      direction: 'y'
+    });
+
+    b.get(6,4).should.eql([2,3]);
   });
 
   it('should `half` rotation', function () {
@@ -68,7 +77,7 @@ describe('Block', function(){
   it('should `half` rotation with step', function () {
     var b = block([5,5], {
       rotate: 'half',
-      step: 2
+      step: -2
     });
 
     b.get(2,4).should.eql([2,4]);
