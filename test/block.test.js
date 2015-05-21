@@ -127,4 +127,11 @@ describe('Block', function(){
       [0,4],[1,4],[2,4],[3,4],[4,4]
     ]);
   });
+
+  it('should get neighbor points', function(){
+    var b = block([5,5]),
+      neighbors = b.getNeighbors([0,0]);
+
+    console.log(neighbors);
+  });
 });

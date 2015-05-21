@@ -77,13 +77,13 @@ function Block (dimensions, options) {
         right = getX(p) + l;
 
       for (x = left; x <= right; x += 1) {
-        levelPoints.push([x,top]);
-        levelPoints.push([x,bottom]);
+        levelPoints.push(findPoint([x,top]));
+        levelPoints.push(findPoint([x,bottom]));
       }
 
       for (y = top + 1; y < bottom; y += 1) {
-        levelPoints.push([left,y]);
-        levelPoints.push([right,y]);
+        levelPoints.push(findPoint([left,y]));
+        levelPoints.push(findPoint([right,y]));
       }
 
       neighbors.push(levelPoints);
