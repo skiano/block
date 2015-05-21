@@ -58,4 +58,16 @@ Step 2 on the X axis    Step -2 on the Y axis (0r +1)
   |     |     |         |   |   ~ ~ ~
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~     ~ ~ ~   |   |
 ```
+### Getting Neighbor points
+
+You can ask for the points surrounding a given point like so
+
+```javascript
+var b = block([5,5]),
+  levels = 2; // default is 1
+
+var n = b.getNeighbors([2,2], levels); // returns 'levels' array
+// n[0] corresponds to first ring around point
+// n[1] corresponds to the ring of points around n[0]
+```
 
