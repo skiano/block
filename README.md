@@ -66,12 +66,12 @@ You can ask for the points surrounding a given point like so
 var b = block([5,5]),
   levels = 2; // default is 1
 
-var n = b.getNeighbors([2,2], levels); // returns 'levels' array
+var n = b.getNeighbors([2,2], levels); // returns 'neighbors' array
 // n[0] corresponds to first ring around point
 // n[1] corresponds to the ring of points around n[0]
 ```
 
-_illustration of 'levels' array
+_illustration of `neighbors` array
 ```
   [2,2]    ->     n[0]    ->     n[1]
 
